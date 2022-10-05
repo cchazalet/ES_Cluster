@@ -1,7 +1,9 @@
 This code will deploy an ES cluster in TP E for the ELK project.
 
-We choose the following configuration : 
+We choose the following configuration :
+
 3 master nodes :
+
 tc405-112-01.insa-lyon.fr
 tc405-112-02.insa-lyon.fr
 tc405-112-03.insa-lyon.fr

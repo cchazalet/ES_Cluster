@@ -1,0 +1,4 @@
+---
+# defaults file for deploy_es
+path_data: "/tmp/data"
+path_log: "/tmp/logs"

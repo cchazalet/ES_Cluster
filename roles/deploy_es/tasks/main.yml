@@ -1,0 +1,63 @@
+---
+# tasks file for deploy_es
+#- name: Download es v7.10.2 and shasum
+#  ansible.builtin.get_url:
+#   url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.2-linux-x86_64.tar.gz
+#   dest: /tmp/elasticsearch-7.10.2-linux-x86_64.tar.gz
+
+- name: Extract archive
+  ansible.builtin.unarchive:
+   src: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.2-linux-x86_64.tar.gz
+   dest: /tmp/
+   remote_src: yes
+
+- name: Launch elastic search 
+  shell: "./bin/elasticsearch -d -p pid"
+  args:
+   chdir: /tmp/elasticsearch-7.10.2/
+
+- name: Checking that ES is running 
+  shell: GET /
+  register: results
+
+- name: Print request result
+  debug:
+   msg: "{{ results }}"
+
+- name: Get neighbors IP
+  vars:
+   neighbors_ip: []
+  set_fact:
+   neighbors_ip: "{{ neighbors_ip + [hostvars[neighbor].ip] }}"
+  loop: "{{ groups['tpE']}}"
+  loop_control:
+   loop_var: neighbor 
+
+- name: Get master nodes
+  vars:
+   masters: []
+  set_fact: 
+   masters: "{{ masters + [hostvars[neighbor].inventory_hostname_short]}}"
+  when:
+   - hostvars[neighbor].master == true 
+  loop: "{{ groups['tpE'] }}"
+  loop_control:
+   loop_var: neighbor
+
+- name: Generate config file on remote host
+  vars:
+    neighbors_ip: "{{ neighbors_ip | difference ([ip]) }}" 
+  template:
+   src: templates/config_file.j2
+   dest: "/tmp/elasticsearch-7.10.2/config/{{ inventory_hostname_short }}.yml"
+
+- name: Create directory for ES logs 
+  ansible.builtin.file:
+   path: "{{ path_log }}"
+   state: directory 
+
+- name: Create directory for ES data 
+  ansible.builtin.file:
+   path: "{{ path_data }}"
+   state: directory 
+   

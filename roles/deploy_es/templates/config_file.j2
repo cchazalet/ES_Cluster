@@ -1,0 +1,19 @@
+# ======================== Elasticsearch Configuration =========================
+# ---------------------------------- Cluster -----------------------------------
+cluster.name: {{ cluster_name }}
+# ------------------------------------ Node ------------------------------------
+node.name: {{ inventory_hostname_short }}
+{% if master %}
+node.master: true
+{% else %}
+node.data: true 
+{% endif %}
+# ----------------------------------- Paths ------------------------------------
+path.data: {{ path_data }}
+path.logs: {{ path_log }}
+# ---------------------------------- Network -----------------------------------
+network.host: {{ ip }}
+http.port: {{ es_port }}
+# --------------------------------- Discovery ----------------------------------
+discovery.seed_hosts: {{ neighbors_ip }}
+cluster.initial_master_nodes: {{ masters }}

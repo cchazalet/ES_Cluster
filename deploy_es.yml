@@ -1,0 +1,8 @@
+---
+- name: Install elastic search
+  hosts: all 
+  gather_facts: no 
+  roles:
+   - deploy_es 
+
+

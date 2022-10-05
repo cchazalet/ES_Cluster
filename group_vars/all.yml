@@ -1,0 +1,3 @@
+ansible_ssh_user: jborrelli
+cluster_name: "cluster-5TCELK-01"
+es_port: 9400

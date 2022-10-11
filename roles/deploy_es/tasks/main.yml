@@ -11,19 +11,6 @@
    dest: /tmp/
    remote_src: yes
 
-- name: Launch elastic search 
-  shell: "./bin/elasticsearch -d -p pid"
-  args:
-   chdir: /tmp/elasticsearch-7.10.2/
-
-- name: Checking that ES is running 
-  shell: GET /
-  register: results
-
-- name: Print request result
-  debug:
-   msg: "{{ results }}"
-
 - name: Get neighbors IP
   vars:
    neighbors_ip: []
@@ -49,7 +36,7 @@
     neighbors_ip: "{{ neighbors_ip | difference ([ip]) }}" 
   template:
    src: templates/config_file.j2
-   dest: "/tmp/elasticsearch-7.10.2/config/{{ inventory_hostname_short }}.yml"
+   dest: "/tmp/elasticsearch-7.10.2/config/{{ config_file_name }}.yml"
 
 - name: Create directory for ES logs 
   ansible.builtin.file:
@@ -61,3 +48,4 @@
    path: "{{ path_data }}"
    state: directory 
    
+

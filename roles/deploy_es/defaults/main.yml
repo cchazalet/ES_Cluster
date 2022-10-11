@@ -2,3 +2,4 @@
 # defaults file for deploy_es
 path_data: "/tmp/data"
 path_log: "/tmp/logs"
+config_file_name: "elasticsearch"

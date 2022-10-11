@@ -1,6 +1,7 @@
 ---
 - name: Install elastic search
-  hosts: all 
+  hosts: tc405-112-11.insa-lyon.fr, tc405-112-12.insa-lyon.fr, tc405-112-13.insa-lyon.fr      
+  serial: 1 
   gather_facts: no 
   roles:
    - deploy_es 

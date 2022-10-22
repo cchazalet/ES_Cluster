@@ -1,0 +1,9 @@
+---
+
+- name: Deploy Elasticsearch 
+  import_tasks: elastic.yml
+  when: elastic == true
+
+- name: Deploy Kibana 
+  import_tasks: kibana.yml
+  when: kibana == true

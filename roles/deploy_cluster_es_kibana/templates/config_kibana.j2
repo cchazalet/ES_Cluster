@@ -1,0 +1,5 @@
+# ======================== Kibana Configuration =========================
+server.port: {{ kibana_port }}
+server.host: {{ lookup('dig', ansible_host) }}
+elasticsearch.hosts : {{ masters }}
+

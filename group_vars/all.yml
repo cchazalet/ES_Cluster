@@ -1,3 +1,4 @@
-ansible_ssh_user: jborrelli
-cluster_name: "cluster-5TCELK-01"
-es_port: 9400
+ansible_ssh_user: cchazalet
+cluster_name: "cluster-5TCELK-CLEMENT"
+es_port: 9601
+kibana_port: 5602

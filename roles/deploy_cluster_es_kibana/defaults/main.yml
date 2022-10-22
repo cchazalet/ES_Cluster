@@ -3,3 +3,4 @@
 path_data: "/tmp/data"
 path_log: "/tmp/logs"
 config_file_name: "elasticsearch"
+config_file_name_kibana: "kibana"

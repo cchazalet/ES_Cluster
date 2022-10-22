@@ -5,43 +5,69 @@ all:
    hosts: 
     tc405-112-01.insa-lyon.fr:
      ip: "134.214.202.26"
+     elastic: true
      master: true
+     kibana: false
     tc405-112-02.insa-lyon.fr:
      ip: "134.214.202.27"
+     elastic: false
      master: true
+     kibana: false
     tc405-112-03.insa-lyon.fr:
      ip: "134.214.202.28"
+     elastic: false
      master: true
+     kibana: false
     tc405-112-04.insa-lyon.fr:
      ip: "134.214.202.29"
+     elastic: false
      master: false
+     kibana: false
     tc405-112-05.insa-lyon.fr:
      ip: "134.214.202.30"
+     elastic: false
      master: false
+     kibana: false
     tc405-112-06.insa-lyon.fr:
      ip: "134.214.202.31"
+     elastic: false
      master: false
+     kibana: false
     tc405-112-07.insa-lyon.fr:
      ip: "134.214.202.32"
+     elastic: false
      master: false
+     kibana: false
     tc405-112-08.insa-lyon.fr:
      ip: "134.214.202.33"
+     elastic: false
      master: false
+     kibana: false
     tc405-112-09.insa-lyon.fr:
      ip: "134.214.202.34"
+     elastic: false
      master: false
+     kibana: false    
     tc405-112-10.insa-lyon.fr:
      ip: "134.214.202.35"
+     elastic: false
      master: false
+     kibana: false
     tc405-112-11.insa-lyon.fr:
      ip: "134.214.202.36"
+     elastic: false
      master: false
+     kibana: false
     tc405-112-12.insa-lyon.fr:
      ip: "134.214.202.37"
+     elastic: false
      master: false
-     #tc405-112-13.insa-lyon.fr:
-     #ip: "134.214.202.38"
-     #master: false
+     kibana: false
+    tc405-112-13.insa-lyon.fr:
+     ip: "134.214.202.38"
+     elastic: false
+     master: false
+     kibana: true
      #tc405-112-14.insa-lyon.fr:
      #ip: "134.214.202.39"
      #master: false
